@@ -18,7 +18,6 @@ function Authentication() {
   const handleAuth = async (e) => {
     if (e && e.preventDefault) e.preventDefault();
     
-    // Reset message and start loading
     setMessage({ text: isLogin ? 'Logging in...' : 'Creating account...', type: 'info' });
     setIsLoading(true);
 
@@ -35,10 +34,10 @@ function Authentication() {
       
       localStorage.setItem('token', res.data.token);
       
-      // Success Message
+
       setMessage({ text: 'Success! Redirecting...', type: 'success' });
 
-      // Small delay so user can see the success message
+
       setTimeout(() => {
         if (res.data.user.isProfileComplete) {
           navigate('/Dashboard');
@@ -49,7 +48,7 @@ function Authentication() {
 
     } catch (err) {
       setIsLoading(false);
-      // Detailed error response from Backend
+    
       const errorMsg = err.response?.data?.msg || "Something went wrong. Try again.";
       setMessage({ text: errorMsg, type: 'error' });
     }
@@ -63,7 +62,6 @@ function Authentication() {
           {isLogin ? "Welcome back!" : "Create a new account"}
         </p>
 
-        {/* --- STATUS MESSAGE BOX --- */}
         {message.text && (
           <div className={`mb-4 p-3 rounded-lg text-sm text-center font-medium ${
             message.type === 'error' ? 'bg-red-100 text-red-600 border border-red-200' : 
@@ -123,7 +121,7 @@ function Authentication() {
           <button 
             onClick={() => {
               setIsLogin(!isLogin);
-              setMessage({ text: '', type: '' }); // Clear message when switching
+              setMessage({ text: '', type: '' }); 
             }} 
             className="ml-2 text-blue-600 font-bold hover:underline"
           >
