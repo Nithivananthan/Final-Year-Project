@@ -8,7 +8,10 @@ const Ai = require('./routes/Ai')
 
 const dns = require('node:dns/promises');
 dns.setServers(['8.8.8.8', '8.8.4.4']);
-
+app.use((req, res, next) => {
+  res.setHeader("Cross-Origin-Opener-Policy", "same-origin-allow-popups");
+  next();
+});
 
 app.use(cors()); 
 app.use(express.json()); 

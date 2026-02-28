@@ -7,7 +7,7 @@ function CompleteProfile() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  // Unified Profile State
+
   const [profile, setProfile] = useState({
     academicStatus: '', 
     backlogs: 'No',     
@@ -22,7 +22,7 @@ function CompleteProfile() {
   const handleNext = () => setStep(step + 1);
   const handleBack = () => setStep(step - 1);
 
-  // Fetch Career Domains (Deep Consultation)
+
   const getCollegeConsultation = async () => {
     setLoading(true);
     try {
@@ -40,7 +40,6 @@ function CompleteProfile() {
     }
   };
 
-  // Generate Skill Gaps & 6-Month Roadmap
   const selectPathAndGenerateRoadmap = async (domainName) => {
     setLoading(true);
     try {
@@ -53,10 +52,10 @@ function CompleteProfile() {
         { headers: { Authorization: `Bearer ${token}` } }
       );
       
-      // Save data for the RoadmapView page
+      
       localStorage.setItem('userRoadmap', JSON.stringify(res.data));
       
-      // ✅ NAVIGATE TO ROADMAP INSTEAD OF HOME
+     
       navigate('/roadmap');
     } catch (err) {
       alert("Failed to generate your roadmap.");
@@ -69,7 +68,7 @@ function CompleteProfile() {
     <div className="min-h-screen bg-slate-50 flex items-center justify-center p-6">
       <div className="bg-white p-10 rounded-[3rem] shadow-2xl max-w-2xl w-full relative border border-slate-100 overflow-hidden">
         
-        {/* Animated Top Progress Bar */}
+       
         <div 
           className="absolute top-0 left-0 h-1.5 bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-500" 
           style={{ width: `${(step / 4) * 100}%` }}
