@@ -4,6 +4,7 @@ import Home from './Components/Home'
 import CompleteProfile from './Components/Completeprofile'
 import Navbar from './Components/Navbar'
 import RoadmapView from './Components/RoadmapView';
+import JobBoard from './Components/JobBoard';
 
 const ProtectedRoute = ({ children }) => {
   const token = localStorage.getItem('token');
@@ -27,7 +28,7 @@ function App() {
                 <Route path="/questions" element={<CompleteProfile />} />
                 <Route path="/roadmap" element={<RoadmapView />} />
                 <Route path="/detector" element={<div className="p-10 text-2xl font-bold">Fake Job Identifier Module</div>} />
-                <Route path="/jobs" element={<div className="p-10 text-2xl font-bold">Smart Job Search Module</div>} />
+                <Route path="/jobs" element={<JobBoard/>} />
                 <Route path="*" element={<Navigate to="/home" />} />
               </Routes>
             </div>
